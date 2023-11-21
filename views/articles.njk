@@ -1,0 +1,15 @@
+
+{%extends 'partials/layout.njk'%}
+{%block content%}
+    <h1>hello {{name}} you are {{age}}!</h1>
+    <ul>
+        {% for i in range(0,10) %}
+        <li>{{i}}</li>
+        {% endfor %}
+    </ul>
+    <form action="/test" method="POST">
+        <input type="text" name="name" placeholder="Your name...">
+        <input type="text" name="age" placeholder="Your age...">
+        <input type="submit">
+    </form>
+{%endblock%}
