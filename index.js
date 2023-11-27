@@ -1,7 +1,7 @@
 const express = require('express');
 const nunjucks = require('nunjucks');
 const app = express();
-const port = 3000;
+const port = 3001;
 
 nunjucks.configure('views', {
     autoescape: true,
@@ -10,19 +10,18 @@ nunjucks.configure('views', {
 
 app.use(express.urlencoded());
 
-app.get('/', (req,res) => {
-    let name = req.query.name ??'Kaspar';
+app.get('/', (req, res) => {
+    let name = req.query.name ?? 'Kaspar';
     let age = req.query.age ?? 'NA';
-    res.render('index.njk');
+    res.render('index.njk', {name, age});
 });
 
-app.post('/test', (req,res) => {
-    req.json(req.body);
+app.post('/test', (req, res) => {
+    res.json(req.body);   
 });
 
-let articlesController = require('./src/controllers/articleController');
-app.use(articlesController);
+app.use(require('./src/controllers/ArticlesController'));
 
 app.listen(port, () => {
-    console.log(`example port http://localhost:${port}`);
+  console.log(`Example app listening on port http://localhost:${port}`);
 });

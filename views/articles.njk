@@ -1,15 +1,9 @@
-
-{%extends 'partials/layout.njk'%}
-{%block content%}
-    <h1>hello {{name}} you are {{age}}!</h1>
-    <ul>
-        {% for i in range(0,10) %}
-        <li>{{i}}</li>
-        {% endfor %}
-    </ul>
-    <form action="/test" method="POST">
-        <input type="text" name="name" placeholder="Your name...">
-        <input type="text" name="age" placeholder="Your age...">
-        <input type="submit">
-    </form>
-{%endblock%}
+{% extends 'partials/layout.njk' %}
+{% block title %}Articles{% endblock %}
+{% block content %}
+    <h1>Articles</h1>
+    {% for article in articles %}
+        <h1>{{article.title}}</h1>
+        <p>{{article.content}}</p>
+    {% endfor %}
+{% endblock %}
