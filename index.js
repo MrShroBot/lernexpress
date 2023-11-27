@@ -9,6 +9,7 @@ nunjucks.configure('views', {
 });
 
 app.use(express.urlencoded());
+app.use(express.json());
 
 app.get('/', (req, res) => {
     let name = req.query.name ?? 'Kaspar';
@@ -21,6 +22,7 @@ app.post('/test', (req, res) => {
 });
 
 app.use(require('./src/controllers/ArticlesController'));
+app.use(require('./src/controllers/MessageController'));
 
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
